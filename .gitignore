@@ -1,4 +1,10 @@
-/bin/
-*.exe
-*.out
+# Ignore all bin folders recursively
+**/bin/
+
+# Common C++ build files
 *.o
+*.out
+*.exe
+
+# VS Code settings (optional)
+.vscode/
