@@ -31,6 +31,7 @@ int totalHammingDistance(vector<int> res) {
   for (int i = 0; i < res.size(); i++) {
     for (int j = i + 1; j < res.size(); j++) {
       cout << res[i] << " ";
+      cout << "jhelsdfas" << endl;
     }
   }
   return 1;
