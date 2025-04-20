@@ -1,57 +1,36 @@
 #include <bits/stdc++.h>
-#define int long long int
+ 
 using namespace std;
-
-vector<int> prime;
-vector<int> getPrimes(int limit) {
-  vector<int> sieve(limit + 1, 1);
-  sieve[0] = sieve[1] = 0;
-  for (int i = 2; i * i <= limit; ++i) {
-    if (sieve[i]) {
-      for (int j = i * i; j <= limit; j += i) sieve[j] = 0;
+ 
+bool is_prime(int x) {
+    if (x <= 1) {
+        return false;
     }
-  }
-  vector<int> primes;
-  for (int i = 2; i <= limit; ++i)
-    if (sieve[i]) primes.push_back(i);
-  return primes;
+    for (int i = 2; i * i <= x; i++) {
+        if (x % i == 0) {
+            return false;
+        }
+    }
+    return true;
 }
-
-int stringMod(string &s, int mod) {
-  int res = 0;
-  for (char ch : s) {
-    res = (res * 10 + (ch - '0')) % mod;
-  }
-  return res;
-}
+ 
 void solve() {
-  int x, k;
-  cin >> x >> k;
-  string y = "";
-  while (k--) {
-    y = y + to_string(x);
-  }
-  if (y == "1") {
-    cout << "NO\n";
-    return;
-  }
-
-  for (int i : prime) {
-    if (stringMod(y, i) == 0 && y != to_string(i)) {
-      cout << "NO\n";
-      return;
+    int x, k;
+    cin >> x >> k;
+    if (k > 1 && x > 1) {
+        cout << "NO";
+    } else if (k == 1) {
+        cout << (is_prime(x) ? "YES" : "NO");
+    } else {
+        cout << ((k == 2) ? "YES" : "NO");
     }
-  }
-  cout << "YES\n";
 }
-
-int32_t main() {
-  ios::sync_with_stdio(false);
-  cin.tie(0);
-
-  prime = getPrimes(10000);
-  int t;
-  cin >> t;
-  while (t--) solve();
-  return 0;
+ 
+int main() {
+    int tests;
+    cin >> tests;
+    while (tests--) {
+        solve();
+        cout << '\n';
+    }
 }
