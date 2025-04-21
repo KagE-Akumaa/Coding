@@ -26,15 +26,33 @@ HammingDistance(4, 14) + HammingDistance(4, 2) + HammingDistance(14, 2) = 2 + 2
 #include <bits/stdc++.h>
 #define int long long int
 using namespace std;
+int HammingBit(int a, int b) {
+  int n = a ^ b;
+  int c = 0;
+  while (n > 0) {
+    n = n & (n - 1);
+    c++;
+  }
+  return c;
+}
 int totalHammingDistance(vector<int> res) {
   int sum = 0;
-  for (int i = 0; i < res.size(); i++) {
-    for (int j = i + 1; j < res.size(); j++) {
-      cout << res[i] << " ";
-      cout << "jhelsdfas" << endl;
+  
+  for(int i = 0; i<32; i++){
+    int one = 0, zero = 0;
+    for(int j = 0; j<res.size(); j++)
+    {
+      if(res[j]&1)
+        one++;
+      else
+        zero++;
+
+        res[j] = res[j] >> 1;
     }
+    sum += one*zero;
   }
-  return 1;
+
+  return sum;
 }
 int32_t main() {
   ios::sync_with_stdio(false);
