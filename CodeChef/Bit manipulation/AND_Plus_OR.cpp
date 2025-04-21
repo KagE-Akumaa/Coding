@@ -99,6 +99,7 @@ Subtask #2 (70 points): original constraints
 #include <utility>
 #define int long long int
 using namespace std;
+// overkill using binary search to find the last pair O(logn)
 pair<int, int> getPair(int x) {
   pair<int, int> p;
   int l = 0, r = x;
@@ -119,6 +120,7 @@ pair<int, int> getPair(int x) {
 void solve() {
   int x;
   cin >> x;
+  // a&b + a|b is same as a + b so just add 0 and x to find the getPair
   int a = 0, b = x;
   cout << a << " " << x << '\n';
 }
