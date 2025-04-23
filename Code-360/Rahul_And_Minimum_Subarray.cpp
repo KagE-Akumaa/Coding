@@ -17,7 +17,7 @@ int minSubArrayLen(vector<int> res, int k, int n) {
     }
     r++;
   }
-  return mlen;
+  return mlen == INT_MAX ? 0 : mlen;
 }
 void solve() {
   int n, k;
