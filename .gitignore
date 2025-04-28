@@ -1,5 +1,6 @@
 # Ignore all bin folders recursively
 **/bin/
+**/.cph/
 
 # Common C++ build files
 *.o
